@@ -23,10 +23,15 @@ Quality parameters used in this repo and updated in `.github/workflows` folder
 - If the file does not exist/ not created, returns None
 - The console will have the heading with battery paramters and the sensor readings separeted by ,
 Example : 
+
 Temperature,SOC
-<Tempvalue1>,<SOCvalue1>
+
+Tempvalue1,SOCvalue1
+
 .....
-<Tempvalue50>,<SOCvalue50>
+
+Tempvalue50,SOCvalue50
+
 
 ## How to call the sender function
 
@@ -34,10 +39,13 @@ Temperature,SOC
 2. Call WriteSensorInput function that generates the readings using random generator
 3. Call ReadSensorReadings function to read the generated csv and prints to console
 
-Example:
-file = 'SensorReadings.csv'
-WriteSensorInput(file)
-ReadSensorReadings(file)
+
+ file = 'SensorReadings.csv'
+
+ WriteSensorInput(file)
+
+ ReadSensorReadings(file)
+
 
 ## Tests added
 
