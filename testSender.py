@@ -37,7 +37,6 @@ class BMS_Sender(unittest.TestCase):
       Path(InvalidRange_file).unlink()
 
   def test_NonExistingcsv(self):
-      self.assertTrue(ReadSensorReadings('NonExisting.csv')==None)
-
+      self.assertIsNone(ReadSensorReadings('NonExisting.csv'))
 
 unittest.main()
