@@ -1,11 +1,5 @@
 ##  Sender : Streaming BMS Data
 
-## Minimum Functionality Requirement
-- simulates and sends at least two Battery / Charging parameters
-- sends fifty readings in a stream
-- can either generate values for the parameters, or read from a file
-- uses console output to communicate the parameters.
-
 ## Quality Parameters
 Quality parameters used in this repo and updated in `.github/workflows` folder
 
