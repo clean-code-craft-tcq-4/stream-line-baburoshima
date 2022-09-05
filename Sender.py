@@ -26,13 +26,13 @@ def ReadSensorReadings(file = 'SensorReadings.csv'):
         BatteryParameter1_Values = []
         BatteryParameter2_Values = []
         with open(file, mode='r') as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            BatteryParameters = next(csv_reader) 
+            SensorReadings = csv.reader(csv_file, delimiter=',')
+            BatteryParameters = next(SensorReadings) 
             print(f'{", ".join(BatteryParameters)}')
-            for row in csv_reader:
-                print(f'{row[0]},{row[1]}')
-                BatteryParameter1_Values.append(row[0])
-                BatteryParameter2_Values.append(row[1])
+            for Readings in SensorReadings:
+                print(f'{Readings[0]},{Readings[1]}')
+                BatteryParameter1_Values.append(Readings[0])
+                BatteryParameter2_Values.append(Readings[1])
             return BatteryParameters,BatteryParameter1_Values, BatteryParameter2_Values
     else :
         return None
