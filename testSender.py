@@ -9,8 +9,8 @@ generated_file = 'Generated.csv'
 
 class BMS_Sender(unittest.TestCase):
   def test_Writecsv(self):
-      WriteSensorReadings('SensorInput.csv')
-      self.assertTrue(CheckifFileExists('SensorInput.csv')==True)
+      WriteSensorReadings('SensorReadings.csv')
+      self.assertTrue(CheckifFileExists('SensorReadings.csv')==True)
 
   def test_IfFileExists(self):    
      self.assertTrue(CheckifFileExists('NonExisting.csv')==False)
@@ -21,9 +21,10 @@ class BMS_Sender(unittest.TestCase):
      Path(generated_file).unlink()
 
   def test_readcsv(self):
-      self.assertTrue(ReadSensorReadings('SensorInput.csv')[0]==['Temperature', 'SOC'])
-      self.assertTrue(0 <= int(ReadSensorReadings('SensorInput.csv')[1][0]) <= 45)
-      self.assertTrue(20 <= int(ReadSensorReadings('SensorInput.csv')[2][1])<= 80)
+      self.assertTrue(ReadSensorReadings('SensorReadings.csv')[0]==['Temperature', 'SOC'])
+      self.assertTrue(0 <= int(ReadSensorReadings('SensorReadings.csv')[1][0]) <= 45)
+      self.assertTrue(20 <= int(ReadSensorReadings('SensorReadings.csv')[2][1])<= 80)
+      self.assertTrue(ReadSensorReadings('SensorReadings.csv')[3],50)
 
   def test_InvalidRanges(self):
       with open(InvalidRange_file, 'w', newline='') as csv_file:
@@ -31,7 +32,7 @@ class BMS_Sender(unittest.TestCase):
         writer.writerows(rowsInvalid)
       self.assertTrue(ReadSensorReadings(InvalidRange_file)[0]==['Temperature', 'SOC'])
       self.assertFalse(0 <= int(ReadSensorReadings(InvalidRange_file)[1][0]) <= 45)
-      self.assertFalse(20 <= int(ReadSensorReadings(InvalidRange_file)[2][1])<= 80)
+      self.assertFalse(20 <= int(ReadSensorReadings(InvalidRange_file)[2][1]) <= 80)
       self.assertTrue(0 <= int(ReadSensorReadings(InvalidRange_file)[1][1]) <= 45)
       self.assertTrue(20 <= int(ReadSensorReadings(InvalidRange_file)[2][0])<= 80)
       Path(InvalidRange_file).unlink()
