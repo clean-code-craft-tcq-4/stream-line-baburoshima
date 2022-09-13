@@ -45,7 +45,7 @@ def Is_BatteryParamterInRange(Readings,MIN,MAX):
         Paramter_InRange = Readings
     return Paramter_InRange
 
-if __name__ == "__main__":
+if __name__ == "__main__":  #pragma no cover
     file = 'SensorReadings.csv'
     WriteSensorReadings(file)
     ReadSensorReadings(file)
