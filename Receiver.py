@@ -2,10 +2,17 @@ import sys
 
 COUNT_FOR_SMA = 5
 
-def check_invalid_value(value_list):
+def remove_invalid_value(value_list):
     value_list = [value for value in value_list if value != 'InvalidRange']
     return value_list
-      
+
+def get_valid_data(value_list):
+    par = value_list[0]
+    value_list.pop(0)
+    value_list = remove_invalid_value(value_list)
+    value_list = [int(value) for value in value_list]
+    return par, value_list
+    
 def get_data_from_input_stream(input_stream):
     sensor1_value_list = []
     sensor2_value_list = []
@@ -15,14 +22,8 @@ def get_data_from_input_stream(input_stream):
         sensor1_value_list.append(reading[0])
         sensor2_value_list.append(reading[1])
             
-    sensor1_parameter = sensor1_value_list[0]
-    sensor2_parameter = sensor2_value_list[0]
-    sensor1_value_list.pop(0)
-    sensor2_value_list.pop(0)
-    sensor1_value_list = check_invalid_value(sensor1_value_list)
-    sensor2_value_list = check_invalid_value(sensor2_value_list)
-    sensor1_value_list = [int(value) for value in sensor1_value_list]
-    sensor2_value_list = [int(value) for value in sensor2_value_list]                  
+    sensor1_parameter, sensor1_value_list = get_valid_data(sensor1_value_list)
+    sensor2_parameter, sensor2_value_list = get_valid_data(sensor2_value_list)                
     return sensor1_parameter,sensor1_value_list,sensor2_parameter,sensor2_value_list
 
 def get_max_min_value(value_list):

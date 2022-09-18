@@ -1,4 +1,4 @@
-name: No Duplication beyond 2 lines
+name: No Duplication beyond 3 lines
 
 on: [push, pull_request]
 

@@ -1,22 +1,29 @@
 import unittest
 from unittest.mock import patch, call
 import Receiver
-from Receiver import check_invalid_value, get_data_from_input_stream, get_max_min_value, print_max_min, get_simple_moving_average, print_simple_moving_average, main_func 
+from Receiver import remove_invalid_value, get_valid_data, get_data_from_input_stream, get_max_min_value, print_max_min, get_simple_moving_average, print_simple_moving_average, main_func 
 
 class TestReceiver(unittest.TestCase):
 
-    #Test check_invalid_value with InvalidRange
-    def test_check_invalid_value_with_InvalidRange(self):
+    #Test remove_invalid_value with InvalidRange
+    def test_remove_invalid_value_with_InvalidRange(self):
         input_list = ["34","43","InvalidRange","55","InvalidRange"]
         expected_list = ["34","43","55"]
-        actual_list = check_invalid_value(input_list)
+        actual_list = remove_invalid_value(input_list)
         self.assertEqual(actual_list,expected_list)
 
-    #Test check_invalid_value without InvalidRange
-    def test_check_invalid_value_without_InvalidRange(self):
+    #Test remove_invalid_value without InvalidRange
+    def test_remove_invalid_value_without_InvalidRange(self):
         input_list = ["34","43","55"]
         expected_list = ["34","43","55"]
-        actual_list = check_invalid_value(input_list)
+        actual_list = remove_invalid_value(input_list)
+        self.assertEqual(actual_list,expected_list)
+
+    #Test get_valid_data
+    def get_valid_data(self):
+        input_list = ["Temperature","34","43","55","InvalidRange"]
+        expected_list = ["34","43","55"]
+        actual_list = get_valid_data(input_list)
         self.assertEqual(actual_list,expected_list)
     
     #Test get_data_from_input_stream with valid values
