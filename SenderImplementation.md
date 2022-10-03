@@ -7,6 +7,20 @@ Quality parameters used in this repo and updated in `.github/workflows` folder
 - Lines of duplicate code allowed: 2 
 - Ensure 100% line and branch coverage at every step. Included the coverage yml in the workflows.
 
+
+##  Sender Flowchart
+```mermaid
+flowchart TD
+
+    A[Temperature sensor] --> C[Random Number generator] 
+    B[SOC sensor] --> C[Random Number generator] 
+    C[Random Number generator] -- 50 readings--> D{Check if within range} --yes--> G
+    D --No--> F[Mark as Invalid Range]
+    F ----> G[Write to SensorReadings.csv]
+    G --Temperature,SOC\nTempvalue1,SOCvalue1\n.....\nTempvalue50,SOCvalue50--> H[Prints to console]
+
+```
+
 ## Implemented functionality
 
 - Two battery parameters are considered here - Temperature and SOC
@@ -25,6 +39,7 @@ Tempvalue1,SOCvalue1
 .....
 
 Tempvalue50,SOCvalue50
+
 
 
 ## How to call the sender function
